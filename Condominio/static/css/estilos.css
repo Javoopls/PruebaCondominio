@@ -3,7 +3,7 @@
 }
 
 body{
-    overflow-x: hidden; /*para desactivar scroll horizontal*/
+    overflow-x: hidden;
 }
 
 body.bg{
@@ -74,25 +74,26 @@ p.pie{
     align-items: center;
 }
 
-
-
-/* CARD */
 .card {
     margin: 0 auto;
     float:inline-start;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.cards{
-    padding: 3em;
+#cards{
+    padding: 50px;
 }
+
+/* .cards{
+    padding: 50px;
+} */
 
 img:hover{
     opacity: 0.7;
 }
 
 .zoom{
-    transition: transform .3s; /* animacion */
+    transition: transform .3s;
     margin: 0 auto;
 }
 
@@ -108,6 +109,6 @@ img:hover{
     padding-right: 2em;
 }
 
-.card{
+#card{
     border: none;
 }

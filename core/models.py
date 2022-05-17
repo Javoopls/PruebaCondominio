@@ -23,10 +23,18 @@ class Espacio(models.Model):
     precio = models.PositiveIntegerField(blank=True, null=True)
     aforo = models.PositiveIntegerField()
     descripcion = models.TextField(max_length=200)
-    imagen = models.ImageField()
+    imagen = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.imagen.url
+        except:
+            url = ''
+        return url
 
 class PagoReserva(models.Model):
     residente = models.ForeignKey(Residente, on_delete=models.CASCADE)

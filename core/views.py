@@ -1,16 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from core.decorators import residente_only
+from .models import *
 
 # Create your views here.
 
-def carrito(request):
-    context = {}
-    return render(request, 'core/carrito.html', context)
 
 def home(request):
     context = {}
     return render(request, 'core/home.html', context)
+
+def espacio(request):
+    espacios = Espacio.objects.all()
+    context = {'espacios': espacios}
+    return render(request, 'core/espacio.html', context)
+    
+def carrito(request):
+    context = {}
+    return render(request, 'core/carrito.html', context)
 
 def pago(request):
     context = {}
