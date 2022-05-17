@@ -9,19 +9,14 @@
   window.onload = mostrarSaludo;
 </script>
 
-{% endblock %}
+{% endblock importaciones %}
 {% bootstrap_css %}
-
-{% block docname%}
-<title>User Profile Home</title>
-{% endblock%}
 
 {% block content %}
 
 <div class="row">
   <div class="col title">
-    <h3 class="w_txt title">User Profile</h3>
-    <h1 class="w_txt"><span id="saludo"></span>{{user}}!</h1>
+    <h1 class="w_txt"><span id="saludo"></span>{{user.first_name}}!</h1>
   </div>
 </div>
 

@@ -36,10 +36,23 @@ class Espacio(models.Model):
             url = ''
         return url
 
+class Reserva(models.Model):
+    residente = models.ForeignKey(Residente, on_delete=models.CASCADE)
+    fecha_reserva = models.DateTimeField(auto_now_add=True)
+    pagada = models.BooleanField(default=False)
+    id_reserva = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return str(self.id)
+
+class CantReserva(models.Model):
+    espacio = models.ForeignKey(Espacio, on_delete=models.SET_NULL, null=True)
+    reserva = models.ForeignKey(Reserva, on_delete=models.SET_NULL, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
 class PagoReserva(models.Model):
     residente = models.ForeignKey(Residente, on_delete=models.CASCADE)
     espacio = models.ForeignKey(Espacio, on_delete=models.CASCADE)
-    total = models.PositiveIntegerField()
     fecha_pago = models.DateTimeField()
     id_pago = models.CharField(max_length=100, null=True)
     

@@ -16,7 +16,14 @@ def espacio(request):
     return render(request, 'core/espacio.html', context)
     
 def carrito(request):
-    context = {}
+    
+    if request.user.is_authenticated:
+        residente = request.user.residente
+        reserva, created = Reserva.objects.get_or_create(residente=residente, pagada=False)
+        espacios = reserva.cantreserva_set.all()
+    else:
+        espacios = []
+    context = {'espacios':espacios}
     return render(request, 'core/carrito.html', context)
 
 def pago(request):
